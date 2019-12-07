@@ -287,6 +287,8 @@ namespace App {
 				window->hide();
 			}
 		}
+
+		// 尝试退出，不是野蛮退出
 		Core::Application::QuitAttempt();
 	}
 
@@ -307,8 +309,10 @@ namespace App {
 		const auto updateReady = !UpdaterDisabled()
 			&& (UpdateChecker().state() == UpdateChecker::State::Ready);
 		if (updateReady) {
+			// 更新重启
 			cSetRestartingUpdate(true);
 		} else {
+			// 设置重启
 			cSetRestarting(true);
 			cSetRestartingToSettings(true);
 		}

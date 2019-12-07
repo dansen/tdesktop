@@ -161,8 +161,10 @@ void SetupInterfaceScale(
 		}
 		return (result == ScaleValues.size()) ? (result - 1) : result;
 	};
+	
 	const auto inSetScale = Ui::CreateChild<bool>(container.get());
 	const auto setScale = std::make_shared<Fn<void(int)>>();
+
 	*setScale = [=](int scale) {
 		if (*inSetScale) return;
 		*inSetScale = true;
@@ -174,6 +176,7 @@ void SetupInterfaceScale(
 			const auto confirmed = crl::guard(button, [=] {
 				cSetConfigScale(scale);
 				Local::writeSettings();
+				// 重启程序
 				App::restart();
 			});
 			const auto cancelled = crl::guard(button, [=] {

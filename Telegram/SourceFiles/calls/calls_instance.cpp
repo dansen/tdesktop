@@ -225,6 +225,7 @@ void Instance::showInfoPanel(not_null<Call*> call) {
 }
 
 bool Instance::isQuitPrevent() {
+	// 特殊处理正在打电话的情况
 	if (!_currentCall || _currentCall->isIncomingWaiting()) {
 		return false;
 	}

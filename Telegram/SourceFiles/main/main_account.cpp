@@ -160,6 +160,7 @@ void Account::destroySession() {
 	Notify::unreadCounterUpdated();
 }
 
+// 账号是否存在
 bool Account::sessionExists() const {
 	return (_sessionValue.current() != nullptr);
 }

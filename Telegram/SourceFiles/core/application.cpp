@@ -790,10 +790,12 @@ void Application::refreshGlobalProxy() {
 
 void Application::QuitAttempt() {
 	auto prevents = false;
+
 	if (IsAppLaunched()
 		&& App().activeAccount().sessionExists()
 		&& !Sandbox::Instance().isSavingSession()) {
 		if (const auto mainwidget = App::main()) {
+			// 是否阻止退出
 			if (mainwidget->isQuitPrevent()) {
 				prevents = true;
 			}
@@ -805,6 +807,8 @@ void Application::QuitAttempt() {
 			prevents = true;
 		}
 	}
+
+	// 是否阻止退出
 	if (prevents) {
 		App().quitDelayed();
 	} else {
@@ -819,6 +823,7 @@ void Application::quitPreventFinished() {
 }
 
 void Application::quitDelayed() {
+	// 通过定时器再次调用quit函数
 	if (!_private->quitTimer.isActive()) {
 		_private->quitTimer.setCallback([] { QApplication::quit(); });
 		_private->quitTimer.callOnce(kQuitPreventTimeoutMs);
