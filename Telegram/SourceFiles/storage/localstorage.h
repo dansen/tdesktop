@@ -39,6 +39,7 @@ namespace Export {
 struct Settings;
 } // namespace Export
 
+// 采用namespace定义一些常用函数
 namespace Local {
 
 void start();

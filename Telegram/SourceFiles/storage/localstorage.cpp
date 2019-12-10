@@ -2618,6 +2618,7 @@ void start() {
 	applyReadContext(std::move(context));
 }
 
+// 将程序设置写入文件保存
 void writeSettings() {
 	if (_basePath.isEmpty()) {
 		LOG(("App Error: _basePath is empty in writeSettings()"));

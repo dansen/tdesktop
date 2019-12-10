@@ -115,6 +115,7 @@ bool HasInterfaceScale() {
 	return true;
 }
 
+// 界面缩放设置
 void SetupInterfaceScale(
 		not_null<Ui::VerticalLayout*> container,
 		bool icon) {
@@ -126,6 +127,7 @@ void SetupInterfaceScale(
 		container.get());
 
 	const auto switched = (cConfigScale() == style::kScaleAuto);
+
 	const auto button = AddButton(
 		container,
 		tr::lng_settings_default_scale(),
@@ -167,6 +169,7 @@ void SetupInterfaceScale(
 
 	*setScale = [=](int scale) {
 		if (*inSetScale) return;
+		
 		*inSetScale = true;
 		const auto guard = gsl::finally([=] { *inSetScale = false; });
 
