@@ -47,3 +47,4 @@ stage
 /Linux/
 /Telegram/Makefile
 *.*~
+Telegram/.vscode/settings.json
